@@ -40,14 +40,16 @@ public class OrderActionServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		PrintWriter out=response.getWriter();
+		//reading the user provided details
 		String action=request.getParameter("action");
 		String id=request.getParameter("purchaseid");
+		//converting to required data type
 		int purchaseid=Integer.parseInt(id);
 //		MerchantStock merchantStockObj=(MerchantStock) session.getAttribute("merchant_stock");
 //		System.out.println(merchantStockObj);
 		PurchaseDetails purchaseDetailsObj=new PurchaseDetails();;
 		purchaseDetailsObj.setPurchase_id(purchaseid);
-		
+		//passing the purchase object to resource file to find the purchase details
 		Client client = ClientBuilder.newClient( new ClientConfig() );
 		String apiURL = "http://localhost:8081/WareHouseManagement/webapi/purchase-details-page";
 		WebTarget webTarget = client.target(apiURL).path("find-details");

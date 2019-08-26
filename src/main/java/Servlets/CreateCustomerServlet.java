@@ -41,17 +41,19 @@ public class CreateCustomerServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.getWriter().append("");
 		PrintWriter out=response.getWriter();
+		//reading the user provided details
 		String name = request.getParameter("name");
 		String phonenumber = request.getParameter("phonenumber");
 		String address = request.getParameter("address");
 		int size=phonenumber.length();
+		// checking for if any fields have been left blank
 		if(name!=null && address!=null && phonenumber!=null) {
 		if(size==10) {
 		CustomerInfo custInfoObj=new CustomerInfo();
 		custInfoObj.setName(name);
 		custInfoObj.setAdderss(address);
 		custInfoObj.setPhonenumber(phonenumber);
-		
+		//passing the customer object to resource to add to the database
 		Client client = ClientBuilder.newClient( new ClientConfig() );
 		String apiURL = "http://localhost:8081/WareHouseManagement/webapi/customer-info-page";
 		WebTarget webTarget = client.target(apiURL).path("create-customer");

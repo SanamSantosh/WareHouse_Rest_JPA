@@ -11,6 +11,7 @@ import bean.Login;
 @Path("login-page")
 public class LoginResource {
 	
+	//this method is for calling repository for getting login information for the entered user id
 	@POST
     @Path("validation")
     @Produces(MediaType.TEXT_PLAIN)

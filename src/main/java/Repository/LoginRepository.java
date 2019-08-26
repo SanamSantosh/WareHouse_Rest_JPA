@@ -8,6 +8,7 @@ import bean.Login;
 
 public class LoginRepository {
 	
+	//This method returns the login information for the given login id
 	public Login getDetails(Login login) {
 		Login loginobj=new Login();
     	EntityManagerFactory emf = Persistence.createEntityManagerFactory("WareHouse");

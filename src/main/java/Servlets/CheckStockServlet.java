@@ -40,7 +40,9 @@ public class CheckStockServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("");
+		//reading the user provided details
 		String iid = request.getParameter("itemid"); 
+		//converting to required data type
 		int itemid=Integer.parseInt(iid);  
 		PrintWriter out=response.getWriter();
 		HttpSession session=request.getSession();  
@@ -48,6 +50,8 @@ public class CheckStockServlet extends HttpServlet {
 		
 		ItemInfo itemInfoObj = new ItemInfo();
 		itemInfoObj.setItem_id(itemid);
+		//passing the item object to find if the given item exists or not
+		//if exists then displays the item details
 		Client client = ClientBuilder.newClient( new ClientConfig() );
 		String apiURL = "http://localhost:8081/WareHouseManagement/webapi/item-details-page";
 		WebTarget webTarget = client.target(apiURL).path("check-item");

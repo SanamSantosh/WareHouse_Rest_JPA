@@ -8,6 +8,8 @@ import bean.CustomerInfo;
 
 public class CustomerInfoRepository {
 	
+	//This method checks for the existence of the Customer in the Customer table 
+	//and returns details of that particular customer 
 	public CustomerInfo findCustomer(CustomerInfo custInfoObj) {
 		CustomerInfo custObj=new CustomerInfo();
     	EntityManagerFactory emf = Persistence.createEntityManagerFactory("WareHouse");
@@ -18,6 +20,8 @@ public class CustomerInfoRepository {
     	return custObj;
 	}
 	
+	
+	//This method adds the new customer into database  
 	public CustomerInfo addCustomer(CustomerInfo custInfoObj) {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("WareHouse");
     	EntityManager em = emf.createEntityManager();

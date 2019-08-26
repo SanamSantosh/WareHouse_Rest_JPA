@@ -10,6 +10,8 @@ import bean.PurchaseDetails;
 
 public class PurchaseDetailsRepository {
 	
+	
+	//This method inserts the purchase details into the database
 	public String insertPurchase(PurchaseDetails purchaseObj) {
 		MerchantStock merchantObj=new MerchantStock();
 		PurchaseDetails purchase=new PurchaseDetails();
@@ -34,6 +36,7 @@ public class PurchaseDetailsRepository {
     	}
 	}
 	
+	//This method returns the purchase details
 	public PurchaseDetails findPurchase(PurchaseDetails purchaseObj) {
 		PurchaseDetails purchace=new PurchaseDetails();
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("WareHouse");

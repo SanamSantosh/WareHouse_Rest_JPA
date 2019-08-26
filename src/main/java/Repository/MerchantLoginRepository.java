@@ -8,6 +8,7 @@ import bean.MerchantDetails;
 
 public class MerchantLoginRepository {
 	
+	//this method returns the merchant login details
 	public MerchantDetails getDetails(MerchantDetails merchnat) {
 		MerchantDetails merchantObj=new MerchantDetails();
     	EntityManagerFactory emf = Persistence.createEntityManagerFactory("WareHouse");

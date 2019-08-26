@@ -12,6 +12,7 @@ import bean.PurchaseDetails;
 @Path("merchant-details-page")
 public class MerchantDetailsResource {
 	
+	//this method is for calling repository for creating a new merchant in db
 	@POST
     @Path("create-merchant-stock")
     @Produces(MediaType.APPLICATION_JSON)
@@ -23,7 +24,8 @@ public class MerchantDetailsResource {
 	
     }
 	
-	
+	//this method is for calling repository to reduce stock from the merchant table 
+	// after merchant accepts the order
 	@POST
     @Path("reduce-stock")
     @Produces(MediaType.APPLICATION_JSON)
@@ -44,6 +46,8 @@ public class MerchantDetailsResource {
     	
     }
 	
+	//this method is for calling repository for removing the order from the order table 
+	//after merchant accepts/rejects order
 	@POST
     @Path("remove-purchase")
     @Produces(MediaType.TEXT_PLAIN)

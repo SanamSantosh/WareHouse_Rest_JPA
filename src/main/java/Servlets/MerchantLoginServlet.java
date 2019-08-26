@@ -41,8 +41,10 @@ public class MerchantLoginServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.getWriter().append("");
 		PrintWriter out=response.getWriter();
+		//reading the user provided details
 		String merchant = request.getParameter("merchantid");
 		String password = request.getParameter("password");
+		//converting into required data type
 		int merchantid=Integer.parseInt(merchant);
 		HttpSession session=request.getSession();
 		session.setAttribute("merchant_id", merchantid);
@@ -50,7 +52,7 @@ public class MerchantLoginServlet extends HttpServlet {
 		MerchantDetails merchantObj = new MerchantDetails();
 		merchantObj.setMerchant_id(merchantid);
 		merchantObj.setPassword(password);
-		
+		//passes the merchant object to resource file to check the merchant login details
 		Client client = ClientBuilder.newClient( new ClientConfig() );
 		String apiURL = "http://localhost:8081/WareHouseManagement/webapi/merchant-login-page";
 		WebTarget webTarget = client.target(apiURL).path("validation");

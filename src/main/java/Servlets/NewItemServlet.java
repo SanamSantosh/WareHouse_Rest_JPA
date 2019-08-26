@@ -40,9 +40,11 @@ public class NewItemServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.getWriter().append("");
 		PrintWriter out=response.getWriter();
+		//reading the user provided details
 		String name = request.getParameter("name");
 		String iprice = request.getParameter("price");
 		String istock = request.getParameter("stock");
+		//converting to required data type
 		float price=Float.parseFloat(iprice); 
 		int stock=Integer.parseInt(istock);
 		
@@ -50,7 +52,7 @@ public class NewItemServlet extends HttpServlet {
 		itemInfoObj.setName(name);
 		itemInfoObj.setPrice(price);
 		itemInfoObj.setStock(stock);
-		
+		//passes the item object to the resource file for creating new item
 		Client client = ClientBuilder.newClient( new ClientConfig() );
 		String apiURL = "http://localhost:8081/WareHouseManagement/webapi/item-details-page";
 		WebTarget webTarget = client.target(apiURL).path("create-item");

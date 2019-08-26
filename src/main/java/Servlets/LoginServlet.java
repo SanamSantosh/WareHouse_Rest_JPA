@@ -39,13 +39,14 @@ public class LoginServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.getWriter().append("");
 		PrintWriter out=response.getWriter();
+		//reading the user provided details
 		String loginid = request.getParameter("loginid");
 		String password = request.getParameter("password");
 		
 		Login login = new Login();
 		login.setLogin_id(loginid);
 		login.setPassword(password);
-		
+		//passes the login object to the resource file for checking the login details
 		Client client = ClientBuilder.newClient( new ClientConfig() );
 		String apiURL = "http://localhost:8081/WareHouseManagement/webapi/login-page";
 		WebTarget webTarget = client.target(apiURL).path("validation");

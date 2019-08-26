@@ -11,7 +11,8 @@ import bean.Transactions;
 
 public class DisplayTransactionsRepository {
 	
-	
+	//This method checks for the transactions with a given date and 
+	//returns the list of transactions for the given date
 	public List<Transactions> checkTransactions(Transactions tranObj) {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("WareHouse");
     	EntityManager em = emf.createEntityManager();

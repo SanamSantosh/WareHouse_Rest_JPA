@@ -39,14 +39,17 @@ public class CustomerInfoServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("");
+		//reading the user provided details
 		String cid = request.getParameter("custid"); 
+		//converting to required data type
 		int custid=Integer.parseInt(cid);  
 		HttpSession session=request.getSession();  
         session.setAttribute("custid",cid); 
 		
 		CustomerInfo log = new CustomerInfo();
 		log.setCustomer_id(custid);
-		System.out.println("Check for customer");
+		//passing the customer object to the resource file for checking if the customer exists or not
+		// if exists displays the customer information
 		Client client = ClientBuilder.newClient( new ClientConfig() );
 		String apiURL = "http://localhost:8081/WareHouseManagement/webapi/customer-info-page";
 		WebTarget webTarget = client.target(apiURL).path("check-customer");

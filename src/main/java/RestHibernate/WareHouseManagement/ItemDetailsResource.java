@@ -12,6 +12,7 @@ import bean.ItemInfo;
 @Path("item-details-page")
 public class ItemDetailsResource {
 	
+	//this method is for calling repository for creating a new item in the db
 	@POST
     @Path("create-item")
     @Produces(MediaType.APPLICATION_JSON)
@@ -23,6 +24,7 @@ public class ItemDetailsResource {
 	
     }
 	
+	//this method is for calling repository for checking for an item id in db
 	@POST
     @Path("check-item")
     @Produces(MediaType.TEXT_PLAIN)
@@ -37,6 +39,7 @@ public class ItemDetailsResource {
     	
     }
 	
+	//this method is for calling repository is for adding stock for existing item in db
 	@POST
     @Path("add-stock")
     @Produces(MediaType.APPLICATION_JSON)

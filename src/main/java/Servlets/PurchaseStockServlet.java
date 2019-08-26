@@ -42,9 +42,11 @@ public class PurchaseStockServlet extends HttpServlet {
 		response.getWriter().append("");
 		response.setContentType("text/html");
 		PrintWriter out=response.getWriter();
+		//reading the user provided details
 		String stock = request.getParameter("stockid");
 		String merchant = request.getParameter("merchantid");
 		String quan = request.getParameter("quantity");
+		//converting to required data type
 		int stockid=Integer.parseInt(stock);
 		int merchantid=Integer.parseInt(merchant);
 		int quantity=Integer.parseInt(quan);
@@ -55,7 +57,7 @@ public class PurchaseStockServlet extends HttpServlet {
 		purchaseObj.setQuantity(quantity);
 		purchaseObj.setMerchantObj(merchantObj);
 		purchaseObj.setMerchant_id(merchantid);
-		
+		// passing the purchase object to resource file for inserting the purchase details into the db
 		Client client = ClientBuilder.newClient( new ClientConfig() );
 		String apiURL = "http://localhost:8081/WareHouseManagement/webapi/purchase-details-page";
 		WebTarget webTarget = client.target(apiURL).path("insert-purchase");

@@ -40,7 +40,9 @@ public class ItemInfoServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("");
+		//reading the user provided details
 		String iid = request.getParameter("itemid"); 
+		//converting to required data type
 		int itemid=Integer.parseInt(iid);  
 		PrintWriter out=response.getWriter();
 		HttpSession session=request.getSession();  
@@ -48,6 +50,8 @@ public class ItemInfoServlet extends HttpServlet {
 		
 		ItemInfo itemInfoObj = new ItemInfo();
 		itemInfoObj.setItem_id(itemid);
+		//passes the item object to the resource file and checks if exists or not
+		//if exists displays the item information
 		Client client = ClientBuilder.newClient( new ClientConfig() );
 		String apiURL = "http://localhost:8081/WareHouseManagement/webapi/item-details-page";
 		WebTarget webTarget = client.target(apiURL).path("check-item");

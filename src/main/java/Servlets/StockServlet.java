@@ -42,16 +42,19 @@ public class StockServlet extends HttpServlet {
 		response.getWriter().append("");
 		response.setContentType("text/html");
 		PrintWriter out=response.getWriter();
+		//reading the user provided details
 		String istock = request.getParameter("stock"); 
+		//converting to required data type
 		int stock=Integer.parseInt(istock);
 		HttpSession session=request.getSession();  
 		String icode=(String) session.getAttribute("itmcode");
 		int itemid=Integer.parseInt(icode);
+		//checking if the given stock is a positive value or not
 		if(stock>0) {
 		ItemInfo itemInfoObj=new ItemInfo();
 		itemInfoObj.setItem_id(itemid);
 		itemInfoObj.setStock(stock);
-		
+		//passes the item object to resource file for adding the new stock to the existing item in db
 		Client client = ClientBuilder.newClient( new ClientConfig() );
 		String apiURL = "http://localhost:8081/WareHouseManagement/webapi/item-details-page";
 		WebTarget webTarget = client.target(apiURL).path("add-stock");

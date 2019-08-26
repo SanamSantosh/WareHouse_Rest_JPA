@@ -16,7 +16,7 @@
   </select>
   <br><br>
   <input type="submit">
-  <a href="Login.jsp"><input type="button" name="button" value="Logout"></a>
+  <a href="MerchantLogin.jsp"><input type="button" name="button" value="Logout"></a>
   </form>
 </body>
 </html>

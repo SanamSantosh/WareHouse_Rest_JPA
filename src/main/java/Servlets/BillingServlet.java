@@ -48,15 +48,18 @@ public class BillingServlet extends HttpServlet {
 		response.getWriter().append("");
 		response.setContentType("text/html");
 		PrintWriter out=response.getWriter();
+		//reading user provided details
 		String cid = request.getParameter("cusid");
 		String iid = request.getParameter("itemid");
 		String quan = request.getParameter("quantity");
+		//converting to required data types
 		int itemid=Integer.parseInt(iid);
 		int custid=Integer.parseInt(cid);
 		int quantity=Integer.parseInt(quan);
 		HttpSession session=request.getSession();  
         session.setAttribute("item_id",iid);
 		
+        //finding if the given customer id exists or not
 		CustomerInfo custInfoObj = new CustomerInfo();
 		custInfoObj.setCustomer_id(custid);
 		CustomerInfoRepository repo=new CustomerInfoRepository();
@@ -65,6 +68,7 @@ public class BillingServlet extends HttpServlet {
 		
 		if(custInfoObj1.getName()!=null)
 		{
+		//checking for the item code exists or not
 		ItemInfo itemInfoObj = new ItemInfo();
 		itemInfoObj.setItem_id(itemid);
 		ItemDetailsRepository repo1=new ItemDetailsRepository();
@@ -72,14 +76,16 @@ public class BillingServlet extends HttpServlet {
 		itemInfoObj1=repo1.findItem(itemInfoObj);
 		if(itemInfoObj1.getName()!=null)
 		{
-			
+		// taking local date
 		LocalDate transactiondate=java.time.LocalDate.now();
 		Date transaction_date=Date.valueOf(transactiondate);
+		//inserting the required details to transactions object
 		Transactions tranObj=new Transactions();
 		tranObj.setCustObj(custInfoObj1);
 		tranObj.setItemObj(itemInfoObj1);
 		tranObj.setQuantity(quantity);
 		tranObj.setTransaction_date(transaction_date);
+		//passing the transaction object to resource file to insert the transactions details into the db
 		Client client = ClientBuilder.newClient( new ClientConfig() );
 		String apiURL = "http://localhost:8081/WareHouseManagement/webapi/transactions-page";
 		WebTarget webTarget = client.target(apiURL).path("inserting");

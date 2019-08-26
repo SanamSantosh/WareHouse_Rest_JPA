@@ -11,6 +11,8 @@ import bean.MerchantDetails;
 @Path("merchant-login-page")
 public class MerchantLoginResource {
 	
+	//this method is for calling repository for getting merchant login information
+	//for the entered merchant id
 	@POST
     @Path("validation")
     @Produces(MediaType.TEXT_PLAIN)

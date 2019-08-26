@@ -42,11 +42,13 @@ public class AddMerchantDetailsServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.getWriter().append("");
 		PrintWriter out=response.getWriter();
+		//reading user entered details
 		String mstockid = request.getParameter("stockid");
 		String mitemid = request.getParameter("itemid");
 		String merchant = request.getParameter("merchantid");
 		String mprice = request.getParameter("price");
 		String mstock = request.getParameter("stock");
+		// converting to required  data types
 		float price=Float.parseFloat(mprice); 
 		int stock=Integer.parseInt(mstock);
 		int merchantid=Integer.parseInt(merchant);
@@ -57,6 +59,7 @@ public class AddMerchantDetailsServlet extends HttpServlet {
 		MerchantDetails merchantObj=new MerchantDetails();
 		ItemInfo itemObj=new ItemInfo();
 		itemObj.setItem_id(itemid);
+		//inserting the user details into merchant stock object
 		merchantObj.setMerchant_id(merchantid);
 		merchantStockObj.setStock_id(stockid);
 		merchantStockObj.setItemObj(itemObj);
@@ -64,6 +67,7 @@ public class AddMerchantDetailsServlet extends HttpServlet {
 		merchantStockObj.setPrice(price);
 		merchantStockObj.setStock(stock);
 		
+		//passing the merchant object to resource file for adding the new merchant
 		Client client = ClientBuilder.newClient( new ClientConfig() );
 		String apiURL = "http://localhost:8081/WareHouseManagement/webapi/merchant-details-page";
 		WebTarget webTarget = client.target(apiURL).path("create-merchant-stock");

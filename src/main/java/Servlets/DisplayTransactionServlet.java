@@ -41,7 +41,9 @@ public class DisplayTransactionServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("");
+		//reading the user provided details
 		String tdate = request.getParameter("trandate"); 
+		//converting to required data type
 		Date trandate=Date.valueOf(tdate);
 //		int itemid=Integer.parseInt(iid);  
 		PrintWriter out=response.getWriter();
@@ -50,6 +52,8 @@ public class DisplayTransactionServlet extends HttpServlet {
 		Transactions tranObj = new Transactions();
 		tranObj.setTransaction_date(trandate); 
         session.setAttribute("tranObj",tranObj); 
+        //passing the transaction object to resource file
+        //prints the transaction details of any transactions present in the given date 
 		Client client = ClientBuilder.newClient( new ClientConfig() );
 		String apiURL = "http://localhost:8081/WareHouseManagement/webapi/transactions-page";
 		WebTarget webTarget = client.target(apiURL).path("filter");

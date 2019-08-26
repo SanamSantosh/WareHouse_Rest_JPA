@@ -18,7 +18,7 @@
 <tr><td><input type="submit" name="index_validate" value="submit"></td></tr><tr>
 </table>
 <a href="MerchantHomePage.jsp"><input type="button" name="button" value="back"></a>
-<a href="Login.jsp"><input type="button" name="button" value="logout"></a>
+<a href="MerchantLogin.jsp"><input type="button" name="button" value="logout"></a>
 </form>
 </body>
 </html>

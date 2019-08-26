@@ -55,7 +55,8 @@ System.out.println("no orders");} %>
 
 </table>
 </div> 
-
+<a href="MerchantLogin.jsp"><input type="button" name="button" value="Logout"></a>
+<a href="MerchantHomePage.jsp"><input type="button" name="button" value="Back"></a>
 
 <br><br>
 </body>

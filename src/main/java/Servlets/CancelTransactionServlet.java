@@ -40,12 +40,15 @@ public class CancelTransactionServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.getWriter().append("");
 		PrintWriter out=response.getWriter();
+		//reading the user provided details
 		String tid = request.getParameter("tranid");
+		//converting to required data type
 		int tranid=Integer.parseInt(tid);
-		
+		//inserting the user provided details to transaction object
 		Transactions tranObj = new Transactions();
 		tranObj.setTransaction_id(tranid);
-		
+		//passing the transaction object to resource file for checking the transaction exists or not
+		//if exists removes it from the db
 		Client client = ClientBuilder.newClient( new ClientConfig() );
 		String apiURL = "http://localhost:8081/WareHouseManagement/webapi/transactions-page";
 		WebTarget webTarget = client.target(apiURL).path("delete");

@@ -9,6 +9,7 @@ import bean.PurchaseDetails;
 
 public class MerchantDetailsRepository {
 	
+	//This method adds the merchant details in the database
 	public MerchantStock addMerchantStock(MerchantStock merchantStockObj) {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("WareHouse");
     	EntityManager em = emf.createEntityManager();
@@ -19,7 +20,7 @@ public class MerchantDetailsRepository {
 	}
 	
 
-
+	//This method updates the stock value in the database
 	public PurchaseDetails reduceStock(PurchaseDetails purchaseObj) {
 		System.out.println(purchaseObj);
 		MerchantStock merchantStockObj=new MerchantStock();
@@ -36,6 +37,8 @@ public class MerchantDetailsRepository {
 		return detailsObj;
 	}
 	
+	
+	//this method removes the purchase details from the database with respect to purchaseid
 	public String removePurchase(PurchaseDetails purchaseObj) {
 		PurchaseDetails detailsObj=new PurchaseDetails();
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("WareHouse");

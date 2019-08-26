@@ -12,7 +12,8 @@ import bean.CustomerInfo;
 public class CustomerInfoResource {
 	
 	
-	
+	//this method is for calling repository for checking if the give customer id
+	//exists or not
 	@POST
     @Path("check-customer")
     @Produces(MediaType.TEXT_PLAIN)
@@ -27,6 +28,7 @@ public class CustomerInfoResource {
     	
     }
 	
+	//this method is for calling repository for  creating a new customer 
 	@POST
     @Path("create-customer")
     @Produces(MediaType.APPLICATION_JSON)

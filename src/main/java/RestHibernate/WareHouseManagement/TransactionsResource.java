@@ -12,6 +12,7 @@ import bean.Transactions;
 @Path("transactions-page")
 public class TransactionsResource {
 	
+	//this method is for calling repository for inserting the transaction details after the billing
 	@POST
     @Path("inserting")
     @Produces(MediaType.TEXT_PLAIN)
@@ -22,7 +23,7 @@ public class TransactionsResource {
 		return reply;
     }
 	
-
+	//this method is for calling repository for removing the transaction when order has been cancelled
 	@POST
     @Path("delete")
     @Produces(MediaType.TEXT_PLAIN)
@@ -35,7 +36,7 @@ public class TransactionsResource {
     }
 	
 	 
-	
+	//this method is for calling repository for getting the list of transactions for a particular date
 	@POST
     @Path("filter")
     @Produces(MediaType.TEXT_PLAIN)

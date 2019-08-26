@@ -12,6 +12,7 @@ import bean.Transactions;
 
 public class TransactionRepository {
 	
+	//This method inserts transaction details into database
 	public String insertTransaction(Transactions tranObj) {
 		ItemInfo itemObj=new ItemInfo();
 		ItemInfo itemObj1=new ItemInfo();
@@ -34,6 +35,7 @@ public class TransactionRepository {
     	}
 	}
 	
+	//This method delets the given transaction from the database
 	public String removeTransaction(Transactions tranObj) {
 		ItemInfo itemObj=new ItemInfo();
 		Transactions tranObj1=new Transactions();
@@ -59,6 +61,7 @@ public class TransactionRepository {
     	}
 	}
 	
+	//this methods checks if the transactions exist or not on a given date
 	public String checkTransactions(Transactions tranObj) {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("WareHouse");
     	EntityManager em = emf.createEntityManager();
